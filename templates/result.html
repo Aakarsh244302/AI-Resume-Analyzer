@@ -19,6 +19,21 @@
 </div>
 
 <p class="progress-text">Resume Match Score</p>
+        <h2>ATS Readiness Score</h2>
+
+<div class="score">{{ ats_score }}%</div>
+
+<p>Basic ATS compatibility estimate</p>
+
+<h3>Suggestions to Improve Your Resume</h3>
+
+<ul>
+    {% for suggestion in ats_suggestions %}
+        <li>{{ suggestion }}</li>
+    {% else %}
+        <li>Great! No basic ATS suggestions.</li>
+    {% endfor %}
+</ul>
 
 
         <h3>Skills Found in Resume</h3>
