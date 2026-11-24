@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analysis Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Resume Analysis Result</h1>
+
+        <div class="score">{{ score }}%</div>
+
+<div class="progress-container">
+    <div class="progress-bar" style="width: {{ score }}%;">
+    </div>
+</div>
+
+<p class="progress-text">Resume Match Score</p>
+
+
+        <h3>Skills Found in Resume</h3>
+        {% for skill in resume_skills %}
+            <span class="skill">{{ skill }}</span>
+        {% else %}
+            <p>No skills found.</p>
+        {% endfor %}
+
+        <h3>Matched Skills</h3>
+        {% for skill in matched %}
+            <span class="skill">{{ skill }}</span>
+        {% else %}
+            <p>No matching skills.</p>
+        {% endfor %}
+
+        <h3>Missing Skills</h3>
+        {% for skill in missing %}
+            <span class="skill missing">{{ skill }}</span>
+        {% else %}
+            <p>No missing skills.</p>
+        {% endfor %}
+
+<a href="{{ url_for('download_report',
+    score=score,
+    resume_skills=resume_skills,
+    matched=matched,
+    missing=missing) }}">
+    <button type="button">Download PDF Report</button>
+</a>
+
+
+        <a href="/" class="back-link">Analyze Another Resume</a>
+    </div>
+</body>
+</html>
