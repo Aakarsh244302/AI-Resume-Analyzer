@@ -1,4 +1,3 @@
-
 import re
 
 skills = [
@@ -45,19 +44,16 @@ def analyze_ats_resume(resume_text):
     score = 0
     suggestions = []
 
-    # Check email
     if re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', resume_text):
         score += 15
     else:
         suggestions.append("Add a valid email address.")
 
-    # Check Indian mobile number
     if re.search(r'(?:\+91[\s-]?)?[6-9]\d{9}\b', resume_text):
         score += 15
     else:
         suggestions.append("Add your 10-digit mobile number.")
 
-    # Check important resume sections
     sections = {
         "Education": r'\beducation\b|\bacademic background\b',
         "Skills": r'\bskills\b|\btechnical skills\b',
@@ -72,7 +68,6 @@ def analyze_ats_resume(resume_text):
         else:
             suggestions.append(f"Add a clear {section} section.")
 
-    # Check resume length
     word_count = len(resume_text.split())
 
     if 150 <= word_count <= 1200:
@@ -82,7 +77,6 @@ def analyze_ats_resume(resume_text):
             "Keep resume content clear and concise (150-1200 words)."
         )
 
-    # Check action words and achievements
     action_words = [
         "developed", "created", "designed", "managed",
         "implemented", "improved", "built", "achieved"
