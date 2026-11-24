@@ -55,7 +55,6 @@ def create_pdf_report(score, resume_skills, matched, missing):
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
-
     resume = request.files.get("resume")
     job_description = request.form.get("job_description", "").strip()
 
@@ -84,27 +83,26 @@ def analyze():
 
     except Exception:
         return "Invalid or corrupted PDF file!"
-    resume_skills    , matched, missing, score = analyze_resume(
+
+    resume_skills, matched, missing, score = analyze_resume(
         resume_text, job_description
     )
+
     ats_score, ats_suggestions = analyze_ats_resume(resume_text)
 
-    
-
-   return render_template(
-    "result.html",
-    resume_skills=resume_skills,
-    matched=matched,
-    missing=missing,
-    score=score,
-    ats_score=ats_score,
-    ats_suggestions=ats_suggestions
-)
+    return render_template(
+        "result.html",
+        resume_skills=resume_skills,
+        matched=matched,
+        missing=missing,
+        score=score,
+        ats_score=ats_score,
+        ats_suggestions=ats_suggestions
+    )
 
 
 @app.route("/download-report")
 def download_report():
-
     score = request.args.get("score", default=0, type=float)
     resume_skills = request.args.getlist("resume_skills")
     matched = request.args.getlist("matched")
