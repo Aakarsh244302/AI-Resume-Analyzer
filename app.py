@@ -91,7 +91,7 @@ def analyze():
      
     )
 
-   return render_template(
+  return render_template(
     "result.html",
     resume_skills=resume_skills,
     matched=matched,
@@ -99,6 +99,7 @@ def analyze():
     score=score,
     ats_score=ats_score,
     ats_suggestions=ats_suggestions
+)
 )
     )
 
