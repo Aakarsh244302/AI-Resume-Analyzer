@@ -88,6 +88,7 @@ def analyze():
     resume_skills, matched, missing, score = analyze_resume(
         resume_text, job_description
         ats_score, ats_suggestions = analyze_ats_resume(resume_text)
+     
     )
 
    return render_template(
