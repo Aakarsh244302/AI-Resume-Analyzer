@@ -90,12 +90,15 @@ def analyze():
         ats_score, ats_suggestions = analyze_ats_resume(resume_text)
     )
 
-    return render_template(
-        "result.html",
-        resume_skills=resume_skills,
-        matched=matched,
-        missing=missing,
-        score=score
+   return render_template(
+    "result.html",
+    resume_skills=resume_skills,
+    matched=matched,
+    missing=missing,
+    score=score,
+    ats_score=ats_score,
+    ats_suggestions=ats_suggestions
+)
     )
 
 
