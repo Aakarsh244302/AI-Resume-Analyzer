@@ -84,22 +84,21 @@ def analyze():
 
     except Exception:
         return "Invalid or corrupted PDF file!"
-resume_skills, matched, missing, score = analyze_resume(
-    resume_text, job_description
-)
+    resume_skills    , matched, missing, score = analyze_resume(
+        resume_text, job_description
+    )
 
-ats_score, ats_suggestions = analyze_ats_resume(resume_text)
-   
+    ats_score    , ats_suggestions = analyze_ats_resume(resume_text)
 
-return render_template(
-    "result.html",
-    resume_skills=resume_skills,
-    matched=matched,
-    missing=missing,
-    score=score,
-    ats_score=ats_score,
-    ats_suggestions=ats_suggestions
-)
+    return render_template    (
+        "result.html"        ,
+        resume_skills=resume_skills        ,
+        matched=matched        ,
+        missing=missing        ,
+        score=score        ,
+        ats_score=ats_score        ,
+        ats_suggestions=ats_suggestions
+    )
 
 
 @app.route("/download-report")
