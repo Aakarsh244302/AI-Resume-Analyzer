@@ -5,7 +5,7 @@ from io import BytesIO
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 
-from analyzer import analyze_resume
+from analyzer import analyze_resume, analyze_ats_resume
 
 app = Flask(__name__)
 
